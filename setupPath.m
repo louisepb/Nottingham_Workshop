@@ -3,7 +3,7 @@ function setupPath()
 
 % We want all folders under the class folder to be on the path for the course.
 dirNames = {'ArmsLegs', 'Exercises', 'InstructorMaterials', ...
-            'Reference', 'work'};
+            'Reference', 'work', 'StudentMaterials'};
 for k = 1:numel(dirNames)
     addpath(genpath(dirNames{k}));
 end
