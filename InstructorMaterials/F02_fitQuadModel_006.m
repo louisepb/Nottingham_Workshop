@@ -9,10 +9,10 @@ function [modelCoeffs, fh] = F02_fitQuadModel_006(X, y, showplot)
     validateattributes(X, {'double'}, {'real', '2d', 'nonempty'}, mfilename(), 'X', 1)
     validateattributes(y, {'double'}, {'real', 'column', 'nonempty'}, mfilename(), 'y', 2)
     validateattributes(showplot, {'logical'}, {'scalar'}, mfilename(), 'showplot', 3)
-    if ~(size(X, 1) >= 3)
+    if (size(X, 1) < 3)
         error('F02_fitQuadModel:XTooSmall', 'X must have at least 3 rows.' )
     end
-    if ~(size(X, 1) == numel(y))
+    if (size(X, 1) ~= numel(y))
         error('F02_fitQuadModel:DimMismatch', ...
             'X and y must have the same number of observations.' )
     end
