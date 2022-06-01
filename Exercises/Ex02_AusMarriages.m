@@ -2,7 +2,7 @@
 M = readtable('AusMarriages.dat', 'Delimiter', '\t');
 
 %% Insert an additional variable representing the numeric date.
-M.dn = datenum(M.Date, 'dd/mm/yyyy');
+M.dn = datenum(M.Date);
 
 %% Plot marriages over time.
 figure
