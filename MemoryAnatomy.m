@@ -20,16 +20,18 @@ disp(m.MemAvailableAllArrays/1073741824)
 
 A = rand(6e3);
 m = memory;
-disp('Memory available (GB):')
+disp('Memory available after allocating A (GB):')
 disp(m.MemAvailableAllArrays/1073741824)
+
 B = A; 
 % This is only a reference at the moment, so available memory should 
 % remain constant.
 m = memory;
-disp('Memory available (GB):')
+disp('Memory available after B=A (GB):')
 disp(m.MemAvailableAllArrays/1073741824)
+
 B(1, 1) = 0; 
 % Now that we have made a change, copy-on-write should kick-in.
 m = memory;
-disp('Memory available (GB):')
+disp('Memory available after changing B(GB):')
 disp(m.MemAvailableAllArrays/1073741824)
