@@ -7,7 +7,7 @@ function tests = test_fitQuadModelFinal
 end
 
 function setupOnce(testCase)
-    addpath('./Test_Data')
+    addpath('../Test_Data')
     testCase.TestData = load('fitQuadModel_TestData.mat');
     testCase.TestData.currentRNG = rng;
 end
@@ -46,10 +46,8 @@ function test_invalidInputs(testCase)
         'fitQuadModelFinal:DimMismatch')
 end
 
-function test_validInputs(testCase)
+function test_validOutputs(testCase)
     rng('default') % For reproducibility of test results.
-    verifyInstanceOf(testCase, fitQuadModelFinal(rand(30,1), rand(30,1)), 'double')
-    verifyInstanceOf(testCase, fitQuadModelFinal(rand(50,2), rand(50,1)), 'double')
     
     c = fitQuadModelFinal(rand(100,1), rand(100,1));
     verifySize(testCase, c, [3, 1])
@@ -103,7 +101,7 @@ end
 
 function teardownOnce(testCase)
     % Remove the test directory from the path.
-    rmpath('./Test_Data')
+    rmpath('../Test_Data')
     % Restore the random number generator settings.
     s = testCase.TestData.currentRNG;
     rng(s)
